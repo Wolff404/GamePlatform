@@ -14,7 +14,7 @@ while running:
 
     grid_object.draw_grid()
     pygame.display.flip()
-#test
+
 
 pygame.quit()
 
