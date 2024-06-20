@@ -1,5 +1,5 @@
 import pygame
-import Tictactoe as TTT
+# Create class
 
 
 
