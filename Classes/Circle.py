@@ -1,15 +1,18 @@
 import pygame
 
-class Circle: # Maybe it's easier to use an image with the pygame. Surface than drawing the circles and X maunally.
-    def __init__(self, x, y, col, row, mouse_x, mouse_y, cell_width, cell_height):
-        self.x = x
-        self.y = y
-        self.col = col
-        self.row = row
+from Classes import Grid
+
+
+class Circle:
+    def __init__(self, grid: Grid, col, row, mouse_x, mouse_y, cell_width, cell_height,screen):
+        self.grid = grid  # Uh? Is this ok?
+        self.grid.col = col
+        self.grid.row = row
         self.mouse_x = mouse_x
         self.mouse_y = mouse_y
         self.cell_width = cell_width
         self.cell_height = cell_height
+        self.screen = screen
 
     def draw_circle(self):
         mouse_x, mouse_y = pygame.mouse.get_pos()
