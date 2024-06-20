@@ -1,6 +1,6 @@
 import pygame
 
-class Circle: # Maybe it's easier to use an image with the pygame. Surface than drawing the circles and X maunally
+class Circle: # Maybe it's easier to use an image with the pygame. Surface than drawing the circles and X maunally.
     def __init__(self, x, y, col, row, mouse_x, mouse_y, cell_width, cell_height):
         self.x = x
         self.y = y
