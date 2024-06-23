@@ -7,7 +7,7 @@ pygame.init()
 pygame.display.set_caption('Tic Tac Toe')
 
 grid_object = Grid()
-circle_object = Circle()
+#circle_object = Circle(grid_object.grid, grid_object.col, grid_object.row, )
 
 running = True
 while running:
@@ -17,11 +17,8 @@ while running:
 
 
     grid_object.draw_grid()
-    circle_object.draw_circle()
+    #circle_object.draw_circle()
     pygame.display.flip()
 
 
 pygame.quit()
-
-# elif event.type == pygame.MOUSEBUTTONDOWN:
-# CR.draw_cross()
