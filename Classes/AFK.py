@@ -1,5 +1,4 @@
 import random
-from random import randrange
 import pygame
 from pygame.locals import *
 
@@ -26,9 +25,9 @@ while running:
             running = False
 
     rect = rect.move(speed)
-    if rect.left < 0 or rect.right > width:
+    if rect.left < 0 or rect.right > width:     #Bounce when it hits the left or right wall
         speed[0] = -speed[0]
-    if rect.top < 0 or rect.bottom > height:
+    if rect.top < 0 or rect.bottom > height:    #Bounce when it hits the top or bottom wall.
         speed[1] = -speed[1]
 
     screen.fill(R_colors)
