@@ -2,12 +2,12 @@
 import pygame
 
 
-class Pregame_Screen: # Problems may occur because mindset was making a pregame screen, but actually made checkboxes.
-    def __init__(self, x, y, width, height, screen):
-        self.rect = pygame.Rect(x, y, width, height)
+class PregameScreen: # Problems may occur because mindset was making a pregame screen, but actually made checkboxes.
+    def __init__(self):
+        self.rect = pygame.Rect(10, 10, 300, 300)
         self.color = (0, 0, 0)
         self.checked = False
-        self.screen = (400, 400)
+        self.screen = 400,400
 
     def draw(self, screen):
         screen = pygame.display.set_mode((self.screen))
