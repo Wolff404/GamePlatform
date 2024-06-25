@@ -1,6 +1,6 @@
 import pygame
 
-from Classes import Grid
+from øOldClasses import Grid
 
 
 class Circle:
