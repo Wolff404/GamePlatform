@@ -38,3 +38,4 @@ Following this idea, the ideal structure (i think) will look something like this
 ### Adding new games:
  *  Snake
  *  Sudoku
+ *  2048
