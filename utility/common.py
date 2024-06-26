@@ -20,3 +20,9 @@ class Button:
     def __init__(self):
         pass
     # Initialize button characteristics
+
+    def draw(self):
+        pass
+
+    def is_clicked(self):
+        pass
