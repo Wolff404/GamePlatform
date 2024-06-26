@@ -1,5 +1,5 @@
 import pygame
-from øOldClasses.Grid import Grid
+from æignore.øOldClasses.Grid import Grid
 
 
 pygame.init()

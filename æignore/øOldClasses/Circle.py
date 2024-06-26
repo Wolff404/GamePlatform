@@ -1,7 +1,5 @@
 import pygame
 
-from øOldClasses import Grid
-
 
 class Circle:
     def __init__(self, col, row, cell_width, cell_height, screen):
