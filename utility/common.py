@@ -1,6 +1,22 @@
 import pygame
 
-#Add draw grid functionality here, since all of the games needs it.
+
+class Game:
+    def __init__(self, screen):
+        self.screen = screen
+        # Initialize common game states and other resources.
+
+    def run(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        pass
 
 
-#def draw_grid():
+class Button:
+    def __init__(self):
+        pass
+    # Initialize button characteristics
