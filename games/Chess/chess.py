@@ -1,5 +1,6 @@
 import pygame
 
+
 class Chess:
     def __init__(self):
         pass
