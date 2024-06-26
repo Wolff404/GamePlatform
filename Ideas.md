@@ -35,3 +35,6 @@ Following this idea, the ideal structure (i think) will look something like this
 
 ## IDEAS
 
+### Adding new games:
+ *  Snake
+ *  Sudoku
