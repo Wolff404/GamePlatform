@@ -15,7 +15,17 @@ class Game:
     def draw(self):
         pass
 
+    def next_turn(self):
+        pass
 
+    def check_winner(self):
+        pass
+
+    def empty_spaces(self):
+        pass
+
+    def new_game(self):
+        pass
 class Button:
     def __init__(self):
         pass
