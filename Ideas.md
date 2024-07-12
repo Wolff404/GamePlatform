@@ -35,6 +35,8 @@ Following this idea, the ideal structure (i think) will look something like this
 
 ## IDEAS
 
+### Rename to GridGames?
+
 ### Adding new games:
  *  Snake
  *  Sudoku
