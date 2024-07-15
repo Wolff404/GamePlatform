@@ -55,15 +55,14 @@ def display_menu():
 
         welcome_button.draw()
 
-        if battleships_button.draw() == True:
+        if battleships_button.draw():  # == True
             print("Battleships")  # TODO: Add run game function when it's been made.
 
-        if chess_button.draw() == True:
+        if chess_button.draw():  # == True
             print("Chess")  # TODO: Add run game function when it's been made.
 
-        if tictactoe_button.draw() == True:
+        if tictactoe_button.draw():  # == True
             tictactoe.run()
-            print("Tictactoe")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
