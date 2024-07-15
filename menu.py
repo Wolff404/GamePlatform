@@ -20,7 +20,7 @@ class Menu:
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
-        self.clicked = False
+        self.clicked = False  # Each button not clicked.
 
     def draw(self):
 
@@ -28,15 +28,16 @@ class Menu:
 
         mouse_pos = pygame.mouse.get_pos()
 
-        if self.rect.collidepoint(mouse_pos):
-            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
+        if self.rect.collidepoint(mouse_pos):  # Checking if the mouse is colliding with the image/logo
+            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:  # if (Left click [0]) is pressed,
+                # Also needs self.clicked needs to be false for it to trigger again.
                 self.clicked = True
                 action = True
 
-        if pygame.mouse.get_pressed()[0] == 0:  # With this button can be pressed several times. Useless, I know.
+        if pygame.mouse.get_pressed()[0] == 0:  # With this, the buttons can be pressed several times.
             self.clicked = False
 
-        screen.blit(self.image, (self.rect.x, self.rect.y))
+        screen.blit(self.image, (self.rect.x, self.rect.y))  # Drawing image
 
         return action
 
@@ -74,4 +75,3 @@ def display_menu():
 
 
 display_menu()
-
