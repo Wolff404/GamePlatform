@@ -1,10 +1,10 @@
 import pygame
 from games.TicTacToe import tictactoe
 
-
 SCREEN_HEIGHT = 800
 SCREEN_WIDTH = 800
 
+pygame.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Game platform menu')
@@ -16,7 +16,7 @@ welcome_logo = pygame.image.load('assets/images/welcomeinstructions.png')
 
 
 class Menu:
-    def __init__(self, x, y, image):  # TODO: Add scaling
+    def __init__(self, x, y, image):  # TODO: Add scaling?
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
@@ -63,7 +63,7 @@ def display_menu():
 
         if tictactoe_button.draw() == True:
             tictactoe.run()
-            print("Tictactoe")  # TODO: Add run game function when it's been made.
+            print("Tictactoe")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -71,6 +71,8 @@ def display_menu():
 
         pygame.display.update()
 
+    pygame.quit()
+
 
 display_menu()
-pygame.quit()
+
