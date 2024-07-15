@@ -10,15 +10,21 @@ def run():
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Tictactoe")
 
+    spaces = []
+
     def draw_grid():
         background_color = (230, 230, 230)
         grid = (100, 100, 100)
         screen.fill(background_color)
         for x in range(1, 3):
-            pygame.draw.line(screen,grid,(0, x*200),(screen_width, x*200),3)  # Drawing the horizontal lines
-            pygame.draw.line(screen,grid,(x*200, 0),(x*200, screen_height),3)  # Drawing the vertical lines
+            pygame.draw.line(screen, grid, (0, x*200), (screen_width, x*200), 3)  # Drawing the horizontal lines
+            pygame.draw.line(screen, grid, (x*200, 0), (x*200, screen_height), 3)  # Drawing the vertical lines
 
+    for _ in range(3):
+        row = [0] * 3
+        spaces.append(row)
 
+    print(spaces)
 
     running = True
     while running:
