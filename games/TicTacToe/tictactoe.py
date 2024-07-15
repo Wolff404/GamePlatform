@@ -15,8 +15,8 @@ def run():
         grid = (100, 100, 100)
         screen.fill(background_color)
         for x in range(1, 3):
-            pygame.draw.line(screen,grid,(0, x*200),(screen_width, x*200))
-            pygame.draw.line(screen,grid,(x*200, 0),(x*200, screen_height))
+            pygame.draw.line(screen,grid,(0, x*200),(screen_width, x*200),3)  # Drawing the horizontal lines
+            pygame.draw.line(screen,grid,(x*200, 0),(x*200, screen_height),3)  # Drawing the vertical lines
 
 
 
