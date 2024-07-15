@@ -1,4 +1,4 @@
-﻿#Game Platform! 
+﻿# Game Platform! 
 
 This project is for me to learn, explore, and stay engaged with programming while having fun!
 
