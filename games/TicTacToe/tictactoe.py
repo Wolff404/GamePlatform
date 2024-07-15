@@ -1,16 +1,22 @@
 import pygame
 
+pygame.init()
 
-class TicTacToe:
-    def __init__(self):
-        pass
+screen_width = 600
+screen_height = 600
 
-    def run(self):
-        pass
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Tictactoe")
 
-    def update(self):
-        pass
+def run():
+    running = True
+    while running:
+        screen.fill((255, 255, 255))  # Temporarly to show that the game is active
 
-    def draw(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
 
+        pygame.display.update()
+
+    pygame.quit()

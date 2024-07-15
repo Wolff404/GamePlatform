@@ -1,4 +1,6 @@
 import pygame
+from games.TicTacToe import tictactoe
+
 
 SCREEN_HEIGHT = 800
 SCREEN_WIDTH = 800
@@ -60,11 +62,13 @@ def display_menu():
             print("Chess")  # TODO: Add run game function when it's been made.
 
         if tictactoe_button.draw() == True:
+            tictactoe.run()
             print("Tictactoe")  # TODO: Add run game function when it's been made.
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
         pygame.display.update()
 
 
