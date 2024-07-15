@@ -11,7 +11,7 @@ def run():
     pygame.display.set_caption("Tictactoe")
 
     def draw_grid():
-        background_color = (255,255,255)
+        background_color = (230,230,230)
         grid = (100, 100, 100)
         screen.fill(background_color)
         for x in range(1,3):
