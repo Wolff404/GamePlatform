@@ -33,12 +33,12 @@ def run():
         line_thickness = 3
         x_position = 0
 
-        for x in spaces:
+        for x in spaces: # TODO: Fix this...
             y_position = 0
             for y in x:
                 if y == 1:
-                    pygame.draw.line(screen, black, (x_position * 200 + 15, y_position * 200 + 15),(x_position * 200 + 85, y_position * 200 + 85), line_thickness)
-                    pygame.draw.line(screen, black, (x_position * 200 + 85, y_position * 200 + 15), (x_position * 200 + 15, y_position * 200 + 85), line_thickness)
+                    pygame.draw.line(screen, black, (x_position * 250 + 15, y_position * 250 + 15),(x_position * 250 + 85, y_position * 250 + 85), line_thickness)
+                    pygame.draw.line(screen, black, (x_position * 250 + 85, y_position * 250 + 15), (x_position * 250 + 15, y_position * 250 + 85), line_thickness)
 
                 if y_position == -1:
                     pygame.draw.circle(screen, black, (x_position * 200 + 50, y_position * 200 + 50), 38, line_thickness)
@@ -59,10 +59,10 @@ def run():
             if event.type == pygame.MOUSEBUTTONUP and clicked == True:  # For checking a mouse click cycle
                 clicked = False  # Now implementing logic for when the mousebutton is released.
                 mouse_position = pygame.mouse.get_pos()  # Where the mousebutton was released
-                cell_x = mouse_position[0]  # Defining x coordinate
-                cell_y = mouse_position[1]  # Defining y coordinate
-                if spaces[cell_x // 200][cell_y // 200] == 0:  # Checking if anything has been clicked.
-                    spaces[cell_x // 200][cell_y // 200] = player  # Player 1 goes first
+                cell_x = mouse_position[0] // 200  # Defining x coordinate
+                cell_y = mouse_position[1] // 200  # Defining y coordinate
+                if spaces[cell_x][cell_y] == 0:  # Checking if anything has been clicked.
+                    spaces[cell_x][cell_y] = player  # Player 1 goes first
                     player *= -1  # Changing to player 2 ( Player -1) by multiplying 1 with -1 and vice versa
 
         pygame.display.update()
