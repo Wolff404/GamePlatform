@@ -47,31 +47,28 @@ battleships_button = Menu(250, 200, battleships_logo)
 chess_button = Menu(250, 400, chess_logo)
 tictactoe_button = Menu(250, 600, tictactoe_logo)
 
+running = True
+while running:
 
-def display_menu():
-    running = True
-    while running:
+    screen.fill((127, 127, 127))
 
-        screen.fill((127, 127, 127))
+    welcome_button.draw()
 
-        welcome_button.draw()
+    if battleships_button.draw():  # == True
+        print("Battleships")  # TODO: Add run game function when it's been made.
 
-        if battleships_button.draw():  # == True
-            print("Battleships")  # TODO: Add run game function when it's been made.
+    if chess_button.draw():  # == True
+        print("Chess")  # TODO: Add run game function when it's been made.
 
-        if chess_button.draw():  # == True
-            print("Chess")  # TODO: Add run game function when it's been made.
+    if tictactoe_button.draw():
+        tictactoe.run()
 
-        if tictactoe_button.draw():  # == True
-            tictactoe.run()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+    pygame.display.update()
 
-        pygame.display.update()
-
-    pygame.quit()
+pygame.quit()
 
 
-display_menu()

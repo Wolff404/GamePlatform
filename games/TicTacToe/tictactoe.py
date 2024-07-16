@@ -8,32 +8,14 @@ def run():
     screen = pygame.display.set_mode((screen_width, screen_height))
 
     pygame.display.set_caption("Tictactoe")
-    cross_drawing = 'assets/images/tictactoeCROSS.png'
+
 
     clicked = False
     spaces = []
     mouse_position = []
     player = 1
 
-    class TicTacToe:  # Stealing constructor and draw function from menu.py
-        def __init__(self, x, y, image):
-            self.image = image
-            self.rect = self.image.get_rect()
-            self.rect.topleft = (x, y)
-            self.clicked = False
 
-        def draw(self,x,y,image):
-            action = False
-            mouse_pos = pygame.mouse.get_pos()
-            if self.rect.collidepoint(mouse_pos):
-                if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
-                    self.clicked = True
-                    action = True
-            screen.blit(self.image, (self.rect.x, self.rect.y))
-            return action
-
-
-    TicTacToe.draw(200,200,cross_drawing)
     def draw_grid():
         background_color = (230, 230, 230)
         grid = (100, 100, 100)
@@ -47,14 +29,28 @@ def run():
             spaces.append(row)
 
     def place_space():
+        black = (0,0,0)
+        line_thickness = 3
         x_position = 0
+
         for x in spaces:
             y_position = 0
+            for y in x:
+                if y == 1:
+                    pygame.draw.line(screen, black, (x_position * 200 + 15, y_position * 200 + 15),(x_position * 200 + 85, y_position * 200 + 85), line_thickness)
+                    pygame.draw.line(screen, black, (x_position * 200 + 85, y_position * 200 + 15), (x_position * 200 + 15, y_position * 200 + 85), line_thickness)
 
-    draw_grid()
+                if y_position == -1:
+                    pygame.draw.circle(screen, black, (x_position * 200 + 50, y_position * 200 + 50), 38, line_thickness)
+
+                y_position += 1
+            x_position += 1
 
     running = True
     while running:
+        draw_grid()
+        place_space()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -68,6 +64,7 @@ def run():
                 if spaces[cell_x // 200][cell_y // 200] == 0:  # Checking if anything has been clicked.
                     spaces[cell_x // 200][cell_y // 200] = player  # Player 1 goes first
                     player *= -1  # Changing to player 2 ( Player -1) by multiplying 1 with -1 and vice versa
+
         pygame.display.update()
 
     pygame.quit()
