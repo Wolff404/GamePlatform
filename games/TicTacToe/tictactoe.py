@@ -15,6 +15,9 @@ def run():
     mouse_position = []
     player = 1
 
+    for _ in range(3):  # Creating the 3x3 matrice
+        row = [0] * 3
+        spaces.append(row)
 
     def draw_grid():
         background_color = (230, 230, 230)
@@ -24,23 +27,21 @@ def run():
             pygame.draw.line(screen, grid, (0, x*200), (screen_width, x*200), 3)  # Drawing the horizontal lines
             pygame.draw.line(screen, grid, (x*200, 0), (x*200, screen_height), 3)  # Drawing the vertical lines
 
-        for _ in range(3):  # Creating the 3x3 matrice
-            row = [0] * 3
-            spaces.append(row)
+
 
     def place_space():
         black = (0,0,0)
         line_thickness = 3
-        x_position = 0
 
-        for x in spaces: # TODO: Fix this...
+        x_position = 0
+        for x in spaces:  # TODO: Fix this...
             y_position = 0
             for y in x:
                 if y == 1:
                     pygame.draw.line(screen, black, (x_position * 250 + 15, y_position * 250 + 15),(x_position * 250 + 85, y_position * 250 + 85), line_thickness)
                     pygame.draw.line(screen, black, (x_position * 250 + 85, y_position * 250 + 15), (x_position * 250 + 15, y_position * 250 + 85), line_thickness)
 
-                if y_position == -1:
+                if y == -1:
                     pygame.draw.circle(screen, black, (x_position * 200 + 50, y_position * 200 + 50), 38, line_thickness)
 
                 y_position += 1
@@ -54,6 +55,7 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
             if event.type == pygame.MOUSEBUTTONDOWN and clicked == False:
                 clicked = True
             if event.type == pygame.MOUSEBUTTONUP and clicked == True:  # For checking a mouse click cycle
