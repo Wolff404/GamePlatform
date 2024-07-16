@@ -9,7 +9,9 @@ My idea is to create a small local gaming platform where you can play Tic-Tac-To
 
 ## Some inspiration and sources
 
-- https://github.com/russs123/pygame_tutorials/tree/main/Button , For creating the menu.
+- For creating the menu: 
+  - https://github.com/russs123/pygame_tutorials/tree/main/Button 
   - https://www.youtube.com/watch?v=G8MYGDf_9ho 
-- https://github.com/russs123/TicTacToe , For creating the tictactoe game.
+- For creating the tictactoe game:
+  - https://github.com/russs123/TicTacToe 
   - https://youtu.be/KBpfB1qQx8w?si=z9-xRWAoBvqQOIIe
