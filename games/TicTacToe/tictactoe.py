@@ -27,9 +27,9 @@ def run():
             pygame.draw.line(screen, grid, (0, x * 200), (screen_width, x * 200), 3)  # Drawing the horizontal lines
             pygame.draw.line(screen, grid, (x * 200, 0), (x * 200, screen_height), 3)  # Drawing the vertical lines
 
-    def place_space():
+    def place_space():  # TODO: Add color to X and O
         black = (0, 0, 0)
-        line_thickness = 3
+        line_thickness = 20
         cell_size = 200  # Size of each cell
 
         x_position = 0
