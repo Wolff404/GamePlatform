@@ -27,8 +27,11 @@ def run():
             pygame.draw.line(screen, grid, (0, x * 200), (screen_width, x * 200), 3)  # Drawing the horizontal lines
             pygame.draw.line(screen, grid, (x * 200, 0), (x * 200, screen_height), 3)  # Drawing the vertical lines
 
-    def place_space():  # TODO: Add color to X and O
-        black = (0, 0, 0)
+    def place_space():
+        # black = (0, 0, 0)
+        blueish = (100, 125, 255)
+        greenish = (154, 161, 15)
+        greenish2 = (161, 154, 50)
         line_thickness = 20
         cell_size = 200  # Size of each cell
 
@@ -42,14 +45,14 @@ def run():
                 # current cell
                 if y == 1:  # Drawing lines to make an X
                     offset = cell_size // 3  # Ensuring that the drawing's size fits the grid cell well enough
-                    pygame.draw.line(screen, black, (center_x - offset, center_y - offset),
+                    pygame.draw.line(screen, greenish, (center_x - offset, center_y - offset),
                                      (center_x + offset, center_y + offset), line_thickness)
-                    pygame.draw.line(screen, black, (center_x + offset, center_y - offset),
+                    pygame.draw.line(screen, greenish2, (center_x + offset, center_y - offset),
                                      (center_x - offset, center_y + offset), line_thickness)
 
                 if y == -1:  # Drawing O
                     radius = cell_size // 3  # Ensuring that the drawing's size fits the grid cell well enough
-                    pygame.draw.circle(screen, black, (center_x, center_y), radius, line_thickness)
+                    pygame.draw.circle(screen, blueish, (center_x, center_y), radius, line_thickness)
 
                 y_position += 1
             x_position += 1
