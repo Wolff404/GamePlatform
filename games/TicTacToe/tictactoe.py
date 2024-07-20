@@ -12,10 +12,9 @@ def run():
 
     clicked = False
     spaces = []
-    #mouse_position = []
     player = 1
 
-    for _ in range(3):  # Creating the 3x3 matrice
+    for _ in range(3):  # Creating the 3x3 list
         row = [0] * 3
         spaces.append(row)
 
@@ -28,7 +27,7 @@ def run():
             pygame.draw.line(screen, grid, (x * 200, 0), (x * 200, screen_height), 3)  # Drawing the vertical lines
 
     def place_space():
-        # black = (0, 0, 0)
+
         blueish = (100, 125, 255)
         greenish = (154, 161, 15)
         greenish2 = (161, 154, 50)
@@ -74,7 +73,7 @@ def run():
                 cell_x = mouse_position[0] // 200  # Defining x coordinate
                 cell_y = mouse_position[1] // 200  # Defining y coordinate
                 if spaces[cell_x][cell_y] == 0:  # Checking if anything has been clicked.
-                    spaces[cell_x][cell_y] = player  # Player 1 goes first
+                    spaces[cell_x][cell_y] = player  # Player 1 go first
                     player *= -1  # Changing to player 2 ( Player -1) by multiplying 1 with -1 and vice versa
 
         pygame.display.update()
