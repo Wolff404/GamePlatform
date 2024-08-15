@@ -46,6 +46,7 @@ def run():
                     offset = cell_size // 3  # Ensuring that the drawing's size fits the grid cell well enough
                     pygame.draw.line(screen, greenish, (center_x - offset, center_y - offset),
                                      (center_x + offset, center_y + offset), line_thickness)
+
                     pygame.draw.line(screen, greenish2, (center_x + offset, center_y - offset),
                                      (center_x - offset, center_y + offset), line_thickness)
 
@@ -55,6 +56,58 @@ def run():
 
                 y_position += 1
             x_position += 1
+
+    def check_winner():
+
+        global winner
+        global game_over
+
+        x_position = 0
+
+        for x in spaces:
+            # Checking for columns
+
+            if sum(x) == 3:  # Checking if player 1 won
+                winner = 1
+                game_over = True
+
+            if sum(x) == -3:  # Checking if player 2 won
+                winner = 2
+                game_over = True
+
+            # Checking for rows
+
+            if spaces[0][x_position] + spaces[1][x_position] + spaces[2][x_position] == 3:
+                winner = 1
+                game_over = True
+
+            if spaces[0][x_position] + spaces[1][x_position] + spaces[2][x_position] == -3:
+                winner = 2
+                game_over = True
+
+            x_position += 1
+
+        # Checking for cross
+        if spaces[0][0] + spaces[1][1] + spaces[2][2] == 3 or spaces[2][0] + spaces[1][1] + spaces[0][0] == 3:
+            winner = 1
+            game_over = True
+
+        if spaces[0][0] + spaces[1][1] + spaces[2][2] == -3 or spaces[2][0] + spaces[1][1] + spaces[0][0] == -3:
+            winner = 2
+            game_over = True
+
+        # If the game ends in a tie
+
+        if game_over == False:
+            tie = True
+            for rows in spaces:
+                for x in rows:
+                    if x == 0:
+                        tie = False
+
+            if tie == True:
+                game_over = True
+                winner = 0
 
     running = True
     while running:
