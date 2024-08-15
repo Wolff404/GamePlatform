@@ -126,13 +126,13 @@ def run():
         end_screen_display = font.render(display_ending_text, True, text_color)  # Rendering the ending text
 
         text_rect = end_screen_display.get_rect(center=(screen_width // 2, screen_height // 2 - 35))  # Rectangle
-        pygame.draw.rect(screen, neutral_bg_color, text_rect.inflate(20, 20))  # Inflate adds padding around the text
+        pygame.draw.rect(screen, neutral_bg_color, text_rect.inflate(20, 20))
         screen.blit(end_screen_display, text_rect)
 
         play_again_text = 'Play Again?'
         play_again_display = font.render(play_again_text, True, text_color)  # Render the play again text
         play_again_rect = play_again_display.get_rect(center=(screen_width // 2, screen_height // 2 + 35))
-        pygame.draw.rect(screen, neutral_bg_color, play_again_rect.inflate(20, 20))  # Add padding around the text
+        pygame.draw.rect(screen, neutral_bg_color, play_again_rect.inflate(20, 20))
         screen.blit(play_again_display, play_again_rect)
 
         mouse_pos = pygame.mouse.get_pos()
