@@ -114,23 +114,32 @@ def run():
                 game_over = True
                 winner = 0
 
-
     def display_game_over(winner):
-
         if winner != 0:
             display_ending_text = "Player " + str(winner) + " is the winner."
-
-        elif winner == 0:
+        else:
             display_ending_text = "The game ends in a tie."
 
-        end_screen_display = font.render(display_ending_text, True, (255, 250, 0))
-        pygame.draw.rect(screen, (25, 255, 20), (screen_width // 2 - 100, screen_height // 2 - 60, 200, 50))
-        screen.blit(end_screen_display, (screen_width // 2 - 100, screen_height // 2 - 50))
+        neutral_bg_color = (200, 200, 200)
+        text_color = (0, 0, 0)
+
+        end_screen_display = font.render(display_ending_text, True, text_color)  # Rendering the ending text
+
+        text_rect = end_screen_display.get_rect(center=(screen_width // 2, screen_height // 2 - 35))  # Rectangle
+        pygame.draw.rect(screen, neutral_bg_color, text_rect.inflate(20, 20))  # Inflate adds padding around the text
+        screen.blit(end_screen_display, text_rect)
 
         play_again_text = 'Play Again?'
-        play_again_display = font.render(play_again_text, True, (25, 25, 200))
-        pygame.draw.rect(screen, (255, 255, 40), play_again_rectangle)
-        screen.blit(play_again_display, (screen_width // 2 - 80, screen_height // 2 + 10))
+        play_again_display = font.render(play_again_text, True, text_color)  # Render the play again text
+        play_again_rect = play_again_display.get_rect(center=(screen_width // 2, screen_height // 2 + 35))
+        pygame.draw.rect(screen, neutral_bg_color, play_again_rect.inflate(20, 20))  # Add padding around the text
+        screen.blit(play_again_display, play_again_rect)
+
+        mouse_pos = pygame.mouse.get_pos()
+        if play_again_rectangle.collidepoint(mouse_pos):
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)  # Change to hand cursor to indicate where to click
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)  # Revert to default cursor
 
     running = True
     while running:
