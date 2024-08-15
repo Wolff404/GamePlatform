@@ -1,8 +1,11 @@
 import pygame
+from pygame.locals import *
 
 
 def run():
     pygame.init()
+
+    font = pygame.font.SysFont(None, 52)
 
     screen_width = 600
     screen_height = 600
@@ -13,6 +16,11 @@ def run():
     clicked = False
     spaces = []
     player = 1
+
+    winner = 0
+    game_over = False
+
+    play_again_rectangle = Rect(screen_width // 2 - 80, screen_height // 2, 160, 50)
 
     for _ in range(3):  # Creating the 3x3 list
         row = [0] * 3
@@ -58,9 +66,7 @@ def run():
             x_position += 1
 
     def check_winner():
-
-        global winner
-        global game_over
+        nonlocal winner, game_over
 
         x_position = 0
 
@@ -88,16 +94,15 @@ def run():
             x_position += 1
 
         # Checking for cross
-        if spaces[0][0] + spaces[1][1] + spaces[2][2] == 3 or spaces[2][0] + spaces[1][1] + spaces[0][0] == 3:
+        if spaces[0][0] + spaces[1][1] + spaces[2][2] == 3 or spaces[0][2] + spaces[1][1] + spaces[2][0] == 3:
             winner = 1
             game_over = True
 
-        if spaces[0][0] + spaces[1][1] + spaces[2][2] == -3 or spaces[2][0] + spaces[1][1] + spaces[0][0] == -3:
+        if spaces[0][0] + spaces[1][1] + spaces[2][2] == -3 or spaces[0][2] + spaces[1][1] + spaces[2][0] == -3:
             winner = 2
             game_over = True
 
-        # If the game ends in a tie
-
+        # Checking if the game ends in a tie
         if game_over == False:
             tie = True
             for rows in spaces:
@@ -109,6 +114,24 @@ def run():
                 game_over = True
                 winner = 0
 
+
+    def display_game_over(winner):
+
+        if winner != 0:
+            display_ending_text = "Player " + str(winner) + " is the winner."
+
+        elif winner == 0:
+            display_ending_text = "The game ends in a tie."
+
+        end_screen_display = font.render(display_ending_text, True, (255, 250, 0))
+        pygame.draw.rect(screen, (25, 255, 20), (screen_width // 2 - 100, screen_height // 2 - 60, 200, 50))
+        screen.blit(end_screen_display, (screen_width // 2 - 100, screen_height // 2 - 50))
+
+        play_again_text = 'Play Again?'
+        play_again_display = font.render(play_again_text, True, (25, 25, 200))
+        pygame.draw.rect(screen, (255, 255, 40), play_again_rectangle)
+        screen.blit(play_again_display, (screen_width // 2 - 80, screen_height // 2 + 10))
+
     running = True
     while running:
         draw_grid()
@@ -118,16 +141,38 @@ def run():
             if event.type == pygame.QUIT:
                 running = False
 
+            if game_over == False:   # The error occurs here.
+
+                if event.type == pygame.MOUSEBUTTONDOWN and clicked == False:
+                    clicked = True
+                if event.type == pygame.MOUSEBUTTONUP and clicked == True:  # For checking a mouse click cycle
+                    clicked = False  # Now implementing logic for when the mouse-button is released.
+                    mouse_position = pygame.mouse.get_pos()  # Where the mouse-button was released
+                    cell_x = mouse_position[0] // 200  # Defining x coordinate
+                    cell_y = mouse_position[1] // 200  # Defining y coordinate
+                    if spaces[cell_x][cell_y] == 0:  # Checking if anything has been clicked.
+                        spaces[cell_x][cell_y] = player  # Player 1 go first
+                        player *= -1  # Changing to player 2 ( Player -1) by multiplying 1 with -1 and vice versa
+                        check_winner()
+
+        if game_over == True:
+            display_game_over(winner)
+
             if event.type == pygame.MOUSEBUTTONDOWN and clicked == False:
                 clicked = True
-            if event.type == pygame.MOUSEBUTTONUP and clicked == True:  # For checking a mouse click cycle
-                clicked = False  # Now implementing logic for when the mouse-button is released.
-                mouse_position = pygame.mouse.get_pos()  # Where the mouse-button was released
-                cell_x = mouse_position[0] // 200  # Defining x coordinate
-                cell_y = mouse_position[1] // 200  # Defining y coordinate
-                if spaces[cell_x][cell_y] == 0:  # Checking if anything has been clicked.
-                    spaces[cell_x][cell_y] = player  # Player 1 go first
-                    player *= -1  # Changing to player 2 ( Player -1) by multiplying 1 with -1 and vice versa
+            if event.type == pygame.MOUSEBUTTONUP and clicked == True:
+                clicked = False
+                pos = pygame.mouse.get_pos()
+                if play_again_rectangle.collidepoint(pos):
+
+                    game_over = False
+                    player = 1
+                    spaces = []
+                    winner = 0
+
+                    for x in range(3):
+                        row = [0] * 3
+                        spaces.append(row)
 
         pygame.display.update()
 
